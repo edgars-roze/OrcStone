@@ -8,6 +8,7 @@ namespace Main;
 public class Game : Microsoft.Xna.Framework.Game
 {
     private Texture2D _grassTexture;
+    private Texture2D _orcTexture;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     
@@ -37,6 +38,7 @@ public class Game : Microsoft.Xna.Framework.Game
         // TODO: use this.Content to load your game content here
         
         _grassTexture = Content.Load<Texture2D>("grass");
+        _orcTexture = Content.Load<Texture2D>("orc");
     }
 
     protected override void Update(GameTime gameTime)
@@ -52,20 +54,13 @@ public class Game : Microsoft.Xna.Framework.Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(new Color(86, 50, 38));
 
         // TODO: Add your drawing code here
 
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
-        Vector2 position = new Vector2(0, 0);
-
-        for (position.Y = 0; position.Y < 1440; position.Y += 160) {
-            for (position.X = 0; position.X < 2560; position.X += 160)
-            {
-                _spriteBatch.Draw(_grassTexture, position, null, Color.White, (((int)(position.X / 160) ^ (int)(position.Y / 80)) * 90 * Single.Pi/180), new Vector2(_grassTexture.Width * 0.5f, _grassTexture.Height * 0.5f), 10f, 0, 0f);
-            }
-        }
+        
+        _spriteBatch.Draw(_orcTexture, new Vector2(160, 160), null, Color.White, 0f, Vector2.Zero, 10f, 0, 0);
 
         _spriteBatch.End();
 
