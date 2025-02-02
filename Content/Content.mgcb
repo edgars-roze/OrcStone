@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:Grass.png
 
+#begin Music.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music.wav
+
 #begin Orc.png
 /importer:TextureImporter
 /processor:TextureProcessor
